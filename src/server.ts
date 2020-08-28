@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 import { ApolloServer } from 'apollo-server-express';
 import depthLimit from 'graphql-depth-limit';
 
@@ -5,8 +7,6 @@ import schema from './schema';
 import connectDB from './db';
 import app from './app';
 import services from './services';
-
-require('dotenv').config();
 
 const PORT = process.env.PORT;
 const MODE = process.env.NODE_ENV;
