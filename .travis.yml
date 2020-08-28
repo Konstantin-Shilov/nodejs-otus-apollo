@@ -1,13 +1,6 @@
 language: node_js
 node_js:
   - 14.4
-services:
-  - docker
-before_install:
-  - docker build -t konstantin-shilov/nodejs-otus-apollo .
-  - docker run -p 8000:4000 -d --name nodeapollo konstantin-shilov/nodejs-otus-apollo:latest
-script:
-  - docker exec -it nodeapollo sh -c "npm run tslint"
 deploy:
   provider: heroku
   api_key:
