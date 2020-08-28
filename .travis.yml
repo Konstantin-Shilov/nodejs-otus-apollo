@@ -1,0 +1,18 @@
+language: node_js
+node_js:
+  - 14.4
+services:
+  - docker
+before_install:
+  - docker build -t konstantin-shilov/nodejs-otus-apollo .
+  - docker run -p 8000:4000 -d --name nodeapollo konstantin-shilov/nodejs-otus-apollo:latest
+script:
+  - docker exec -it nodeapollo sh -c "npm run tslint"
+deploy:
+  provider: heroku
+  api_key:
+    secure: D9TXSjgNH9ocIxWjdrfnVZCHIl4A1vqRj9FtFiUp5F5L3R8+0UXzR/r2R/Xvy31s1Jzv7aKeeEnabrZJ5sDA//x15jUfe5vVRurNt3yLbl60tezgbdswapFEyVHrY0Xw5N3xuGSwIJGPlhELTF3DKd5Sk8WZs8OomrsfYV/0ITcCPpdK3wPgO1t994o+WrC7Kv5xTDltKrsI6CI4xQMj8CqRJuQf8GXCu7u4Me7fZpWax4jNntGTn7YKVZPHBXdftcpXDuHNF1EMICtQvOQ8MGSzBPfPbJ7gADFoOhr3swZnDZXFCgPZ4ADOAnyGI0Mzj3O8VB367mBNodS9fmIWb1HlLMy3Zda6XXZIUMOBnHOMgKkHyjMv+wcfEYJiT+rT63NdHOle9oXQ/U+3juhsctwrMdajCHxHxwBsfGLZ41d0L3+XKNYT24AXqUZZwyYDWy9LgZeFd1YpXdMWPK9nn1nA3lkY7Xf4MREtDAmlADAG9oksijKof9P2bp0Pi6Siuy4HUn6SRKPRJLq3XwIeNQzTtVUYB9MokiCtRCnKonuFxwWb6ycs4f8xHJ7Odk9xTW2KQOrvJrwehDQwJCo0sdjsARnPT8gzatyJl7MkGVDT5FOHdSw7H6hLFMoQkeppmuPBkLEPGTjxh3OttbhgQ45KMakQ/g+2FZlCsjsDPYQ=
+  app: node-apollo-ex
+  on:
+    repo: Konstantin-Shilov/nodejs-otus-apollo
+  skip_cleanup: 'true'

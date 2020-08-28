@@ -12,7 +12,7 @@ export default class UsersService {
   }
 
   async findOneById(id: string): Promise<IUser> {
-    return await this.model.findById(id);
+    return this.model.findById(id);
   }
 
   async findByIds(ids: string[]): Promise<IUser[]> {
@@ -20,10 +20,10 @@ export default class UsersService {
       .find()
       .where('_id')
       .in(ids);
-    return ids.map(id => users.find(u => u.id == id));
+    return ids.map(id => users.find(u => u.id === id));
   }
 
   async create(data: any): Promise<IUser> {
-    return await this.model.create(data);
+    return this.model.create(data);
   }
 }

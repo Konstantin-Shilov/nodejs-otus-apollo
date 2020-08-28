@@ -11,7 +11,7 @@ const resolvers: IResolvers = {
   },
   Mutation: {
     addPost: async (_, args, context: IContext, info) => {
-      return await context.services.postsService.create(args.input);
+      return context.services.postsService.create(args.input);
     },
   },
   Post: {

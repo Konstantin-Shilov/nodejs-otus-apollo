@@ -17,7 +17,7 @@ export default class PostsService {
       .where('author')
       .in(authorIds);
 
-    return authorIds.map(id => posts.filter(p => p.author == id));
+    return authorIds.map(id => posts.filter(p => p.author === id));
   }
 
   async create(data: any): Promise<IPost> {

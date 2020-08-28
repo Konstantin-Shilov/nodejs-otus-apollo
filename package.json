@@ -7,8 +7,7 @@
     "build": "tsc",
     "dev": "nodemon --exec ts-node src/server.ts",
     "start": "node dist/server.js",
-    "lint": "eslint src",
-    "prettier": "prettier --write src/**/*.js"
+    "tslint": "tslint src/**/*.ts{,x}"
   },
   "author": "",
   "license": "ISC",

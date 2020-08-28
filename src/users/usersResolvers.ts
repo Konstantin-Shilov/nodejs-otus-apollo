@@ -6,7 +6,7 @@ import DataLoader from 'dataloader';
 const resolvers: IResolvers = {
   Query: {
     users: async (parent, args, context: IContext, info) => {
-      return await context.services.usersService.findAll();
+      return context.services.usersService.findAll();
     },
   },
   Mutation: {
